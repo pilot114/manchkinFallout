@@ -1,16 +1,10 @@
 <?php
 
-include '../vendor/autoload.php';
+//include '../vendor/autoload.php';
 $cards = include '../src/mapping.php';
 
-$number = 20;
+$number = 231;
 
 var_dump($cards[$number]);
 
-echo '<img src="card/result/' . $number . '.png" width="250">';
-
-foreach (glob("card/result/0*.png") as $filename) {
-    $filename = basename($filename);
-    $files[] = $filename;
-}
-echo count($files);
+echo '<img src="card/mini/' . $number . '.png" width="250">';
