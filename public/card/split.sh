@@ -1,6 +1,10 @@
 
-
-for file in {01..13}; do
-    echo Extracting $file...
-    convert -crop 5x2@ original/MF_T-$file.jpg result/X$file%d.png
+for number in {1..28}; do
+    echo splitting $number...
+    index=$(($number-1))
+    convert -crop 5x2@ original/$number.jpg splitted/$index%d.png
 done
+
+convert -crop 661x1027+2644+1027 original/_1.jpg splitted/door.png
+convert -crop 661x1027+2644+1027 original/_2.jpg splitted/skill.png
+convert -crop 661x1027+2644+1027 original/_3.jpg splitted/prize.png
