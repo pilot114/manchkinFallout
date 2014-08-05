@@ -2,4 +2,4 @@
 composer.lock
 /vendor
 /public/card/original
-/public/card/result
+/public/card/splitted
