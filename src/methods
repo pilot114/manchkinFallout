@@ -1,0 +1,35 @@
+modDamage(x)
+modCard(x, selector, [rand])
+modLevel(x)
+modEscape(x)
+
+isHelp
+isClass(class)
+hasCard(id)
+
+getClassCount(paladin)
+steal(player, rand| price)
+useTrap(player)
+give(player, [price])
+take(player)
+
+escapeEvent(killMe)
+finishBattleEvent
+maroderEvent
+
+
+
++- как число в т.ч. отрицательное
+
+СЕЛЕКТОР - продвинутый, тип карты[+цена]
+
+БОЙ->НЕПОТРЕБСТВО
+
+НАВЕШИВАНИЕ НА ЭВЕНТЫ
+
+ВЫЗОВ МЕНЮ ВЫБОРА КАРТ
+
++урон монстру
+get ловушка из сброса, если нет -2 уровня
+
+ШМОТКИ ХОЛОДНОЕ ТЯЖЕЛЫЕ БОЛЬШИЕ
