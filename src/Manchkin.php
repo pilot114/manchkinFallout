@@ -9,16 +9,22 @@ class Manchkin
     public $gender;
     public $damage;
 
-    public $countHand = 2;
+    public $leftHand;
+    public $rightHand;
+
+    public $extraClass;
+    public $extraHand;
 
     public $activeCard;
     public $handCard;
 
     // bool
-    public $fullHead = false;
-    public $fullShield = false;
-    public $fullBoots = false;
-    public $fullHands = false;
+    public $fullArmor    = false;
+    public $fullHelmet   = false;
+    public $fullBoots    = false;
+    public $fullHands    = false;
+    public $homestraight = false;
+
 
     public function __construct($startCards, $gender)
     {
