@@ -1,11 +1,15 @@
 <?php
 
-//include '../vendor/autoload.php';
-$cards = include '../src/mapping.php';
+namespace ManchkinFallout;
 
-$number = rand(0,279);
+$loader = require '../vendor/autoload.php';
 
-var_dump($cards[$number]);
+$game = new Game(3);
 
-echo $number;
-echo '<br><img src="card/mini/' . $number . '.png" width="250">';
+foreach($game->players as $player) {
+
+    foreach($player->handCard as $cardId => $card) {
+        echo '<img src="card/mini/' . $cardId . '.png" width="120">';
+    }
+    echo '<br>';
+}
