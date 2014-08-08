@@ -2,8 +2,11 @@
 
 namespace ManchkinFallout;
 
-class Manchkin
+use Ratchet\ConnectionInterface;
+
+class Manchkin extends \SplObjectStorage
 {
+    public $resourceId;
     public $level;
     public $class;
     public $gender;
@@ -25,6 +28,7 @@ class Manchkin
     public $fullHands    = false;
     public $homestraight = false;
 
+    public $game;
 
     public function __construct($startCards, $gender)
     {

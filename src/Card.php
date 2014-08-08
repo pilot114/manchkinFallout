@@ -1,6 +1,6 @@
 <?php
 
-namespace ManchkinFallout\Card;
+namespace ManchkinFallout;
 
 class Card
 {
