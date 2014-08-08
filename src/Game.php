@@ -1,14 +1,12 @@
 <?php
 
-// game flow and log
-
 namespace ManchkinFallout;
 
 class Game
 {
-    public $players; // 3-6
-
+    public $players;
     public $desk;
+    public $log;
 
     public function __construct($playerCount) // 3-6
     {
@@ -39,15 +37,14 @@ class Game
 
     public function dropCard($cards)
     {
-        foreach($cards as $cardId => $types) {
-            if(in_array('door', $types)) {
-                $this->doors['drop'][$cardId] = $types;
-            } elseif (in_array('perk', $types)) {
-                $this->perks['drop'][$cardId] = $types;
-            } else {
-                $this->prizes['drop'][$cardId] = $types;
-            }
-        }
+        $this->desk['drop'] = $cards;
+    }
+
+    public function refreshPool($place)
+    {
+        $this->shuffleAssoc($this->$place['drop']);
+        $this->$place['pool'] = $this->$place['drop'];
+        $this->$place['drop'] = [];
     }
 
     public function shuffleAssoc(&$array) {
@@ -64,13 +61,6 @@ class Game
     {
         $hours = date('H');
         return $hours > 8 && $hours > 20;
-    }
-
-    public function dropToPool($place)
-    {
-        $this->shuffleAssoc($this->$place['drop']);
-        $this->$place['pool'] = $this->$place['drop'];
-        $this->$place['drop'] = [];
     }
 
     public function sellRags($rags)

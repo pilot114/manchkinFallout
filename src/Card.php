@@ -1,7 +1,5 @@
 <?php
 
-//  128 + 132 + 20 = 280
-
 namespace ManchkinFallout\Card;
 
 class Card
@@ -18,10 +16,6 @@ class Card
     public function play()
     {
 
-    }
-
-    public function discard()
-    {
 
     }
-} 
+}
