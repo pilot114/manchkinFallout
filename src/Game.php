@@ -14,7 +14,7 @@ class Game implements WSI, MCI
 
     public function __construct()
     {
-        $cards = include('mapping.php');
+        $cards = include('mappingData.php');
         $this->shuffleAssoc($cards);
         $this->desk['pool'] = $cards;
         $this->players      = new \SplObjectStorage;
