@@ -8,7 +8,7 @@ class Game
     public $desk;
     public $log;
 
-    public function __construct($playerCount) // 3-6
+    public function __construct($playerCount = 3)
     {
         $cards = include('mapping.php');
         $this->shuffleAssoc($cards);
