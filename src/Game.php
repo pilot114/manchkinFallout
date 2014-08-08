@@ -1,16 +1,13 @@
 <?php
 
-// game flow and log
-
 namespace ManchkinFallout;
 
 class Game
 {
-    public $players; // 3-6
-
+    public $players;
     public $desk;
 
-    public function __construct($playerCount) // 3-6
+    public function __construct($playerCount = 3)
     {
         $cards = include('mapping.php');
         $this->shuffleAssoc($cards);
