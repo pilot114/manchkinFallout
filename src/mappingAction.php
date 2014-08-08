@@ -5,22 +5,34 @@
 // game->nextPlayer
 // game->onEvent('nameEvent', function(){})
 // game->createMenu
-// $user->addAbility('when', function(){})
+// $player->addAbility('when', function(){})
 
 // action if card has is active
 
 return [
-    0 => function() use($user, $game){
-        $game->event('soloBattleStart', function($user){
-            $user->modDamage(3);
+    function() use($player, $game){
+        $game->event('soloBattleStart', function($player){
+            $player->modDamage(3);
         });
-        $game->event('soloBattleEnd', function($user){
-            $user->modDamage(-3);
+        $game->event('soloBattleEnd', function($player){
+            $player->modDamage(-3);
         });
-        $user->addAbility('exceptBattle', function() use ($user){
-            $user->modCard(-2, true); // with menu
-            $user->modCard(1, 'door', 'dark');
+        $player->addAbility('exceptBattle', function() use ($player){
+            $player->modCard(-2, true); // with menu
+            $player->modCard(1, 'door', 'dark');
         });
     },
-    function($args) use($user, $game){},
+    null, null, null,
+    function() use($player, $game){
+        $game->event('assistBattleEnd', function($player){
+            $player->modCard(1, 'prize');
+        });
+        $player->addAbility('exceptBattle', function() use ($player){
+            $player->modCard(1, 'door', 'dark');
+        });
+    },
+
+
+
+    function() use($player, $game){},
 ];
