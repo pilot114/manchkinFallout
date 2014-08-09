@@ -18,7 +18,7 @@ class Desk
         }
     }
 
-    public function getCard($count, $selector, $dark = true)
+    public function getCard($count, $selector, $mode = 'open')
     {
         $cards = [];
         foreach($this->ids['pool'] as $id => $nothing) {

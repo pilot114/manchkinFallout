@@ -1,6 +1,3 @@
-modDamage(x)
-modCard(x, selector, [rand])
-modLevel(x)
 modEscape(x)
 
 isHelp

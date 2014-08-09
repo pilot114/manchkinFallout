@@ -9,6 +9,8 @@ class Player extends \SplObjectStorage
     public $class;
     public $gender;
     public $damage;
+    public $marauderRags;
+    public $escapePoint;
 
     public $leftHand;
     public $rightHand;
@@ -34,13 +36,12 @@ class Player extends \SplObjectStorage
     {
         $this->level = 1;
         $this->damage = 1;
+        $this->marauderRags = 1;
+        $this->escapePoint = 1;
         $this->gender = $gender;
         $this->handCard = $startCards;
     }
 
-    public function modDamage($mod){
-        $this->damage += $mod;
-    }
 
     /*
      *      CARD ACTIONS
@@ -55,9 +56,9 @@ class Player extends \SplObjectStorage
 
     }
 
-    public function dropCard($count, $selector, $interactiveMode = false)
+    public function dropCard($count, $selector, $mode = 'dark')
     {
-        if ($interactiveMode) {
+        if ($mode == 'dark') {
             return $this->activeCard;
         } else {
             return $this->activeCard;
