@@ -11,6 +11,7 @@ class Player extends \SplObjectStorage
     public $damage;
     public $marauderRags;
     public $escapePoint;
+    public $antiradPoint;
 
     public $leftHand;
     public $rightHand;
@@ -38,6 +39,7 @@ class Player extends \SplObjectStorage
         $this->damage = 1;
         $this->marauderRags = 1;
         $this->escapePoint = 1;
+        $this->antiradPoint = 1;
         $this->gender = $gender;
         $this->handCard = $startCards;
     }

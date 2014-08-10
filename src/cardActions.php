@@ -8,7 +8,7 @@
 // $player->addAbility('when', function(){})
 
 // player : addCard     dropCard(num select mode), playCard(id)
-// deck   : setCard     getCard(num select mode)
+// desk   : setCard     getCard(num select mode)
 
 return [
     // classes
@@ -51,7 +51,17 @@ return [
             $game->selectTrapTarget();
         });
     }, 12, 12, 12,
-
+    16 => function($player, $game){
+        $player->dropCard(1, 'helmet');
+    },
+    17 => function($player, $game){
+        $game->onEvent('nearEscapeStart', function($player){
+            $player->$escape -= 100;
+        });
+        $game->onEvent('nearEscapeEnd', function($player){
+            $player->$escape += 100;
+        });
+    },
 
 
 

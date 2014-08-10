@@ -11,11 +11,26 @@ class Game implements WSI, MCI
     public $players;
     public $desk;
     public $log;
+    public $events;
 
     public function __construct()
     {
         $this->desk    = new Desk();
-        $this->players = new \SplObjectStorage;
+    }
+
+    // вызов события. срабатывают все обработчики по очереди
+    public function event($eventName, $args)
+    {
+        if(isset($this->events[$eventName])) {
+            foreach($this->events[$eventName] as $func) {
+                call_user_func_array($func, $args);
+            }
+        }
+    }
+    // добавить обработчик
+    public function onEvent($eventName, \Closure $func)
+    {
+        $this->events[$eventName][] = $func;
     }
 
     // Подписка/отписка на $topic
@@ -83,7 +98,7 @@ class Game implements WSI, MCI
             $startDoors      = $this->getCard('door', 4);
             $startPrizes     = $this->getCard('prize', 4);
             $startCards      = $startDoors + $startPrizes;
-            $this->players[] = new Manchkin($startCards, $gender = 1);
+            $this->players[] = new Player($startCards, $gender = 1);
         }
     }
 
