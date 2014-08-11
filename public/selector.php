@@ -1,43 +1,44 @@
 <?php
 
-$cards = include '../src/cardTypes.php';
+include "../src/Desk.php";
 
-$test = [];
-foreach($cards as $id => $types) {
-    foreach($types as $type) {
-        $test[$type] = null;
+$desk = new \ManchkinFallout\Desk();
+$test = $desk->getSimple();
+
+foreach($test as $id => $card) {
+    foreach($card['types'] as $type){
+        $types[$type] = null;
     }
 }
 
-echo "<form>\n";
+echo "<form>";
 echo "<select name='selector'>";
-foreach($test as $k => $v) {
-    if(isset($_GET['selector']) && $_GET['selector'] == $k) {
-        echo "<option selected>$k</option>";
+foreach($types as $type => $nothing) {
+    if(isset($_GET['selector']) && $_GET['selector'] == $type) {
+        echo "<option selected>$type</option>";
     } else {
-        echo "<option>$k</option>";
+        echo "<option>$type</option>";
     }
 }
 echo '</select>';
-echo '<input type="submit" value="Отправить">';
+echo '<input type="submit" value="Send">';
 echo '</form>';
 
 $count = 0;
 $result = null;
 if(!empty($_GET)) {
-    foreach($cards as $id => $types) {
-        if(in_array($_GET['selector'], $types)) {
+    foreach($test as $id => $card) {
+        if(in_array($_GET['selector'], $card['types'])) {
             $count ++;
             echo $id . ' ';
             $result .= "<img src='/card/mini/$id.png' width='160'>";
         }
     }
 } else {
-    foreach($cards as $id => $types) {
+    foreach($test as $id => $card) {
         $count ++;
         $result .= "<img src='/card/mini/$id.png' width='160'>";
     }
 }
-
 echo '<h2>' . $count . '</h2>';
 echo $result;

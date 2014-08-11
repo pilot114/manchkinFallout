@@ -5,20 +5,27 @@ namespace ManchkinFallout;
 class Desk
 {
     private $ids;
-    private $cardTypes;
+    private $cardData;
     private $cardActions;
 
     public function __construct()
     {
-	$mc = new MongoClient("mongodb://localhost");
-	$db = $mc->selectDB('mf');
-	$cards = new MongoCollection($db, 'cards');
-        $this->cardTypes = include('cardTypes.php');
-        $this->cardActions = include('cardActions.php');
+        $mc = new \MongoClient("mongodb://localhost");
+        $db = $mc->selectDB('mf');
+        $cards = new \MongoCollection($db, 'cards');
+        foreach($cards->find() as $card) {
+            unset($card['_id']);
+            $this->cardData[] = $card;
+        }
         shuffle($ids = range(0, 279));
         foreach($ids as $id) {
             $this->ids['pool'][$id] = null;
         }
+    }
+
+    public function getSimple()
+    {
+        return $this->cardData;
     }
 
     public function getCard($count, $selector, $mode = 'open')
