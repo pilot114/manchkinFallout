@@ -10,6 +10,9 @@ class Desk
 
     public function __construct()
     {
+	$mc = new MongoClient("mongodb://localhost");
+	$db = $mc->selectDB('mf');
+	$cards = new MongoCollection($db, 'cards');
         $this->cardTypes = include('cardTypes.php');
         $this->cardActions = include('cardActions.php');
         shuffle($ids = range(0, 279));
