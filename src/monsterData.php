@@ -1,6 +1,6 @@
 <?php
 
-// level, rad, prize, level
+// level, rad, prize, up
 
 return [
  29 => [12, 0, 3, 1], [10, 0, 3, 1], [7, 2, 2, 1], [6, 2, 2, 1], [6, 0, 2, 1], [9, 0, 3, 1],
