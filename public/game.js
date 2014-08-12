@@ -1,7 +1,24 @@
+var webSocket = new WebSocket('ws://127.0.0.1:9090');
+//
+//webSocket.onopen = function(event) {
+//    console.log('onopen');
+//    webSocket.send("Hello Web Socket!");
+//};
+//
+//webSocket.onmessage = function(event) {
+//    console.log('onmessage, ' + event.data);
+////    webSocket.close();
+//};
+//
+//webSocket.onclose = function(event) {
+//    console.log('onclose');
+//};
+
 var connection = new autobahn.Connection({
-    url: 'ws://127.0.0.1:8080/',
-    realm: 'game'
+    url: 'ws://127.0.0.1:9090/',
+    realm: 'realm1'
 });
+//connection.open();
 
 connection.onopen = function (session) {
 
@@ -9,23 +26,8 @@ connection.onopen = function (session) {
     function onevent(args) {
         console.log("Event:", args[0]);
     }
-    session.subscribe('com.myapp.hello', onevent);
-
+//    session.subscribe('com.myapp.hello', onevent);
+//
     // 2) publish an event
-    session.publish('com.myapp.hello', ['Hello, world!']);
-
-    // 3) register a procedure for remoting
-    function add2(args) {
-        return args[0] + args[1];
-    }
-    session.register('com.myapp.add2', add2);
-
-    // 4) call a remote procedure
-    session.call('com.myapp.add2', [2, 3]).then(
-        function (res) {
-            console.log("Result:", res);
-        }
-    );
+//    session.publish('com.myapp.hello', ['Hello, world!']);
 };
-
-connection.open();

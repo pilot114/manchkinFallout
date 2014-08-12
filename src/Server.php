@@ -3,46 +3,29 @@
 namespace ManchkinFallout;
 
 use Ratchet\Server\IoServer;
-
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
-use Ratchet\Wamp\WampServer;
-use Monolog
-
-require dirname(__DIR__) . '/vendor/autoload.php';
-
-$server = IoServer::factory(
-    new HttpServer(
-        new WsServer(
-            new TestGame()
-        )
-    ),
-    9090
-);
-
-$server->run();
-
-
-
-use Ratchet\Tutorials\Chat;
-use Ratchet\Cookbook\MessageLogger;
 use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/src/TestGame.php';
 
-$stdout = new \Monolog\Handler\StreamHandler('php://stdout');
+$stdout = new StreamHandler('php://stdout');
 $logout = new Logger('SockOut');
 $login  = new Logger('Sock-In');
 $login->pushHandler($stdout);
 $logout->pushHandler($stdout);
 
-$server = IoServer::factory(
-    new MessageLogger(
-        new Chat()
-        , $login
-        , $logout
-    )
-    , 8080
-);
+//$server = IoServer::factory(
+//    new HttpServer(
+//        new WsServer(
+//            new TestGame()
+//        )
+//    ),
+//    9090
+//);
 
+$server = new \Ratchet\App('127.0.0.1', 9090);
+$server->route('/realm', new TestGame());
 $server->run();

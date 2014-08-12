@@ -8,8 +8,12 @@ use Ratchet\MessageComponentInterface;
 
 class TestGame implements WampServerInterface, MessageComponentInterface
 {
-    public function onSubscribe(Conn $conn, $topic) {}
-    public function onUnSubscribe(Conn $conn, $topic) {}
+    public function onSubscribe(Conn $conn, $topic) {
+        echo 'sub';
+    }
+    public function onUnSubscribe(Conn $conn, $topic) {
+        echo 'unsub';
+    }
 
     public function onPublish(Conn $conn, $topic, $event, array $exclude, array $eligible) {
         $topic->broadcast($event);
@@ -23,10 +27,13 @@ class TestGame implements WampServerInterface, MessageComponentInterface
 
     public function onOpen(Conn $conn)
     {
+        echo 'open';
+        $conn->send('You is connect!');
     }
 
     public function onClose(Conn $conn)
     {
+        echo 'close';
     }
 
     public function onError(Conn $conn, \Exception $e)
@@ -38,6 +45,6 @@ class TestGame implements WampServerInterface, MessageComponentInterface
 
     public function onMessage(Conn $from, $msg)
     {
-
+        echo $msg;
     }
 }
