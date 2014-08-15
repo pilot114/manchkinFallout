@@ -14,7 +14,7 @@ $login  = new Logger('Sock-In');
 $login->pushHandler($stdout);
 $logout->pushHandler($stdout);
 
-
 $server = new \Ratchet\App('localhost', 9090);
 $server->route('/wsapi', new TestGame());
+
 $server->run();
