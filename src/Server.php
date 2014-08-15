@@ -23,9 +23,10 @@ $logout->pushHandler($stdout);
 //            new TestGame()
 //        )
 //    ),
-//    9090
+//    9080
 //);
 
-$server = new \Ratchet\App('127.0.0.1', 9090);
-$server->route('/realm', new TestGame());
+$server = new \Ratchet\App('127.0.0.1', 9080);
+$server->route('/ws', new TestGame());
+
 $server->run();
