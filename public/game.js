@@ -1,21 +1,5 @@
-var webSocket = new WebSocket('ws://127.0.0.1:9090');
-//
-//webSocket.onopen = function(event) {
-//    console.log('onopen');
-//    webSocket.send("Hello Web Socket!");
-//};
-//
-//webSocket.onmessage = function(event) {
-//    console.log('onmessage, ' + event.data);
-////    webSocket.close();
-//};
-//
-//webSocket.onclose = function(event) {
-//    console.log('onclose');
-//};
-
 var connection = new autobahn.Connection({
-    url: 'ws://127.0.0.1:9090/',
+    url: 'wss://localhost:9090/wsapi',
     realm: 'realm1'
 });
 //connection.open();
