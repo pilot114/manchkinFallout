@@ -2,19 +2,16 @@
 
 namespace ManchkinFallout;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+use Thruway\Peer\Router;
+use Thruway\Transport\RatchetTransportProvider;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 require dirname(__DIR__) . '/src/TestGame.php';
 
-$stdout = new StreamHandler('php://stdout');
-$logout = new Logger('SockOut');
-$login  = new Logger('Sock-In');
-$login->pushHandler($stdout);
-$logout->pushHandler($stdout);
+$router = new Router();
 
-$server = new \Ratchet\App('localhost', 9090);
-$server->route('/wsapi', new TestGame());
+$transportProvider = new RatchetTransportProvider("127.0.0.1", 9090);
 
-$server->run();
+$router->addTransportProvider($transportProvider);
+
+$router->start();

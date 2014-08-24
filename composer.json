@@ -1,8 +1,9 @@
 {
     "require": {
         "php":">=5.4.0",
-        "cboden/Ratchet": "0.3.*",
         "evilscott/junior": "1.1.*",
-        "monolog/monolog": "1.11.*@dev"
+        "monolog/monolog": "1.11.*@dev",
+		"ratchet/pawl": "dev-master",
+        "voryx/thruway": "dev-master"
     }
 }
