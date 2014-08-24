@@ -1,0 +1,19 @@
+server {
+	listen 80;
+	root /var/www/manchkinFol/public;
+	index index.php;
+
+	server_name manchkinfol.local;
+
+	location = / {
+		try_files @site @site;
+	}
+	location / {
+		try_files $uri $uri/ @site;
+	}
+	location @site {
+		fastcgi_pass    127.0.0.1:9000;
+		include         fastcgi_params;
+		fastcgi_param   SCRIPT_FILENAME    $document_root/index.php;
+	}
+}

@@ -1,9 +1,11 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Manchkin Fallout</title>
     <link rel="stylesheet" href="game.css"/>
-    <!--<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
     <script>
         AUTOBAHN_DEBUG = true;
     </script>
@@ -12,6 +14,5 @@
     <script src="game.js"></script>
 </head>
 <body>
-
 </body>
 </html>
