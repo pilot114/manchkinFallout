@@ -1,9 +1,16 @@
 <?php
 
-// master
-if ($_SERVER['REQUEST_URI'] == '/') {
+$route = $_SERVER['REQUEST_URI'];
+
+if ($route == '/') {
     $gameId = uniqid();
-} else { // slave
+} elseif($route == '/rule') {
+    include 'rule.php';
+    die();
+} elseif(preg_match('#^/desk#',$route)) {
+    include 'desk.php';
+    die();
+} else {
     include 'game.php';
     die();
 }
@@ -24,6 +31,10 @@ if ($_SERVER['REQUEST_URI'] == '/') {
     <p>Онлайн версия игры.
         Автор оригинальной (настольной) игры -
         <a href="http://vk.com/leo_gonna_lie" target="_blank">Леонид Юскевич</a></p>
+    <ul>
+        <li><a href="/rule">Правила</a></li>
+        <li><a href="/desk">Колода</a></li>
+    </ul>
     <a href="/<?php echo $gameId; ?>"><button>Play</button></a>
 </div>
 </body>
