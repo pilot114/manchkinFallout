@@ -3,8 +3,6 @@ var connection = new autobahn.Connection({
     realm: 'realm1'
 });
 
-var gameId = document.URL.split('/').pop();
-
 connection.onopen = function (session) {
 
     function onevent(args) {
@@ -21,8 +19,13 @@ connection.onopen = function (session) {
     session.subscribe('com.log', onlog);
     session.subscribe('com.chat', onchat);
 
-    // 2) publish an event
-    session.publish('game.event', ['Add player']);
+    session.publish('game.event', ['addPlayer']);
 };
 
+    $('body').append('<div>qwe</div>').position({ top: 10, left: 30 });
+
+
+var gameId = document.URL.split('/').pop();
+//createWait(gameId) {
+//}
 connection.open();

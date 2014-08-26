@@ -21,9 +21,6 @@ if ($route == '/') {
 <head>
     <title>Manchkin Fallout</title>
     <link rel="stylesheet" href="game.css"/>
-    <script src="jquery.min.js"></script>
-    <script src="autobahn.min.js"></script>
-    <script src="game.js"></script>
 </head>
 <body id="main">
 <div class="desc">
