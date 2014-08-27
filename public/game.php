@@ -8,6 +8,7 @@
     </script>
     <script src="jquery.min.js"></script>
     <script src="autobahn.min.js"></script>
+    <script src="realm.js"></script>
     <script src="game.js"></script>
 </head>
 <body>
