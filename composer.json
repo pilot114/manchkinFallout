@@ -3,7 +3,12 @@
         "php":">=5.4.0",
         "evilscott/junior": "1.1.*",
         "monolog/monolog": "1.11.*@dev",
-		"ratchet/pawl": "dev-master",
         "voryx/thruway": "dev-master"
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/pilot114/Thruway.git"
+        }
+    ]
 }

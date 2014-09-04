@@ -4,14 +4,19 @@ body {
     background-attachment:fixed;
     background-position: center 100%;
     background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-#main {
-    background: url("main_back.jpg");
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position: center 100%;
-    background-size: cover;
+#board {
+    margin: 1em;
+    background-color: #ffffff;
+    opacity: 0.1;
+    border-radius: .4em;
+    height: 90%;
 }
 
 @font-face {

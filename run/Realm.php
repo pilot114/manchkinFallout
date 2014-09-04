@@ -18,32 +18,35 @@ $connection->on('open',
             static $realms = [];
             $gameId   = $args[0];
             $playerId = $args[1];
-            var_dump($realms);
 
             if(array_key_exists($gameId, $realms)){
 
-                if(count($realms[$gameId]) > 2) {
-                    echo "realm is full: {$gameId}\n";
-                    $session->publish('realm.full', ['Game is full']);
-                } else {
-                    echo "Add new player in realm: {$gameId}\n";
-                    if(!in_array($playerId, $realms[$gameId])) {
-                        $realms[$gameId][] = $playerId;
+                if(!in_array($playerId, $realms[$gameId])) {
+                    echo "Add new player '$playerId' in realm: $gameId\n";
+                    $realms[$gameId][] = $playerId;
+                    if(count($realms[$gameId]) > 2) {
+                        echo "realm '$gameId' is full \n";
+                        echo "List player: \n";
+                        var_dump($realms[$gameId]);
+                        $session->publish('realm.full', ['Game is full']);
                     }
-                    $session->publish('realm.welcome', ['Welcome!']);
                 }
+                $session->publish('realm.welcome', ['Welcome!']);
 
             } else {
-                // create realm ...
-                echo "Create new realm with id: : {$gameId}\n";
+                // create and run gameBoard...
+                system("php GameBoard.php $gameId > /dev/null &", $info);
+
                 $realms[$gameId] = [];
-                if(!in_array($playerId, $realms[$gameId])) {
-                    $realms[$gameId][] = $playerId;
-                }
+                echo "Create new realm with id: : $gameId\n";
+                $realms[$gameId][] = $playerId;
+                echo "Master this realm: $playerId\n";
+
                 $session->publish('realm.welcome', ['Welcome!']);
             }
         });
     }
 );
+
 
 $connection->open();
